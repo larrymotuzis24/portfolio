@@ -17,7 +17,7 @@ const Navbar = () => {
         </button>
       </div>
       <div className={`hidden sm:flex sm:space-x-4 ${isOpen ? 'block' : 'hidden'}`}>
-        {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+        {['About', 'Projects', 'Contact'].map((item) => (
           <Link
             key={item}
             to={`/${item.toLowerCase()}`}
