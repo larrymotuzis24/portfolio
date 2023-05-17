@@ -2,3 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+.typing-effect {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 200px; /* Set this value to the maximum width that the words can occupy */
+  }
+  
+  .typing-effect::after {
+    content: '|';
+    position: absolute;
+    right: 0;
+    animation: blink 1s steps(1) infinite;
+  }
+  
+  .typing {
+    animation: typing 10s steps(100, end) forwards;
+  }
+  
+  .deleting {
+    animation: deleting 2s steps(100, end) forwards;
+  }
+  
+  @keyframes typing {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  @keyframes deleting {
+    0% {
+      width: 100%;
+    }
+    100% {
+      width: 0;
+    }
+  }
