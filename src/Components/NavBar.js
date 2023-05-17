@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  
+  const navLinks = [
+    {name:'About', to:'/'},
+    {name:'Projects', to:'/projects'},
+    {name:'Contact', to:'/contact'},
+  ];
 
   return (
     <>
@@ -17,13 +23,13 @@ const Navbar = () => {
         </button>
       </div>
       <div className={`hidden sm:flex sm:space-x-4 ${isOpen ? 'block' : 'hidden'}`}>
-        {['About', 'Projects', 'Contact'].map((item) => (
+        {navLinks.map((item) => (
           <Link
-            key={item}
-            to={`/${item.toLowerCase()}`}
+            key={item.name}
+            to={item.to}
             className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
           >
-            {item}
+            {item.name}
           </Link>
         ))}
       </div>

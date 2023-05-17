@@ -11,38 +11,48 @@ const About = () => {
     Through dedication and perseverance, I've honed my abilities in various programming languages and frameworks, constantly striving to push the boundaries of what's possible. I believe that software development is an ever-evolving art form, and I'm committed to growing alongside it. I have done work in software development, front-end/back-end web and database/server management.
   `;
 
-
-  
   const introWords = ['Full Stack Developer', 'Problem Solver'];
-  const [intro, setIntro] = useState('');
-  const [animationClass, setAnimationClass] = useState('typing');
+  const [intro, setIntro] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(140);
 
   useEffect(() => {
-    let index = 0;
+    let typingEffect = setTimeout(() => {
+      let currentWord = introWords[loopNum % introWords.length];
+      let typingSpeed = isDeleting ? 100 : 140;
+      setTypingSpeed(typingSpeed);
 
-    const typeAndDelete = () => {
-      setIntro(introWords[index]);
-      setAnimationClass('typing');
+      // add or remove char
+      if (!isDeleting) {
+        setIntro(currentWord.substring(0, intro.length + 1));
+      } else {
+        setIntro(currentWord.substring(0, intro.length - 1));
+      }
 
-      setTimeout(() => {
-        setAnimationClass('deleting');
-        setTimeout(() => {
-          index = (index + 1) % introWords.length;
-          typeAndDelete();
-        }, 2000); // Deleting duration: 2 seconds
-      }, 2000 + introWords[index].length * 200); // Typing duration: 200ms per letter + 2 seconds pause
-    };
+      // switch to deleting
+      if (!isDeleting && intro === currentWord) {
+        setTimeout(() => setIsDeleting(true), 500);
+      }
 
-    typeAndDelete();
-  }, []);
+      // switch to adding
+      if (isDeleting && intro === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
 
+      // rerun the function
+      setTimeout(typingEffect, typingSpeed);
+    }, typingSpeed);
 
+    return () => clearTimeout(typingEffect);
+  }, [intro, isDeleting, loopNum]);
 
   return (
     <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-white">
-      <h1 className="text-4xl font-bold mb-12">About </h1>
-      <h2 className={`typing-effect ${animationClass}`}>{intro}</h2>
+      <h1 className="text-4xl font-bold mb-2">About </h1>
+      <h2 className={`typing-effect${isDeleting ? ' hide-cursor' : ''}`}>{intro}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="space-y-6 col-span-2">
             <p className="text-lg leading-relaxed">{aboutMe}</p>
