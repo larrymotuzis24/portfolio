@@ -1,6 +1,5 @@
 import React from "react";
-import { FiCode, FiShoppingCart, FiBookOpen } from 'react-icons/fi';
-import { AiOutlineMail } from 'react-icons/ai';
+import { FiCode, FiBookOpen } from 'react-icons/fi';
 import testBrewDemo from "../Team-5-TestBrew.mov";
 import CVGDemo from '../CVG-demo-2.mov';
 
