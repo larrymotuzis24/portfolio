@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="-mr-2 flex sm:hidden">
+      <div className="-mr-2 pr-2 flex sm:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
@@ -22,7 +22,7 @@ const Navbar = () => {
           <FontAwesomeIcon icon={isOpen ? 'times' : 'bars'} />
         </button>
       </div>
-      <div className={`hidden sm:flex sm:space-x-4 ${isOpen ? 'block' : 'hidden'}`}>
+      <div className={`hidden:sm:block sm:flex sm:space-x-4 ${isOpen ? 'block' : 'hidden'}`}>
         {navLinks.map((item) => (
           <Link
             key={item.name}
@@ -38,3 +38,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
