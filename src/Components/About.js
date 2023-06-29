@@ -23,25 +23,21 @@ const About = () => {
       let typingSpeed = isDeleting ? 100 : 140;
       setTypingSpeed(typingSpeed);
 
-      // add or remove char
       if (!isDeleting) {
         setIntro(currentWord.substring(0, intro.length + 1));
       } else {
         setIntro(currentWord.substring(0, intro.length - 1));
       }
 
-      // switch to deleting
       if (!isDeleting && intro === currentWord) {
         setTimeout(() => setIsDeleting(true), 500);
       }
 
-      // switch to adding
       if (isDeleting && intro === '') {
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
       }
 
-      // rerun the function
       setTimeout(typingEffect, typingSpeed);
     }, typingSpeed);
 

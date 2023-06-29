@@ -1,4 +1,4 @@
-{
+{ "homepage": "https://larrymotuzis24.github.io/portfolio",
   "name": "porftolio",
   "version": "0.1.0",
   "private": true,
@@ -61,6 +61,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/larrymotuzis24/portfolio/issues"
-  },
-  "homepage": "http://larrymotuzis24.github.io/portfolio"
+  }
+  
 }

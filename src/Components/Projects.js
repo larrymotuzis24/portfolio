@@ -29,7 +29,7 @@ description:'I collaborated with an appraisal group to develop a dynamic and use
 
 const recentWorkDisplay = recentWork.map((work) => {
     return (
-      <div className="bg-blue-500 p-4 rounded-lg shadow-md mb-4 hover:bg-blue-600 hover:shadow-lg transition-all duration-300">
+      <div key={work.name} className="bg-blue-500 p-4 rounded-lg shadow-md mb-4 hover:bg-blue-600 hover:shadow-lg transition-all duration-300">
         <div className="flex-col items-center justify-between mb-4">
           <div>
             <h4 className="text-white text-2xl font-semibold">{work.name}</h4>
@@ -51,7 +51,7 @@ const recentWorkDisplay = recentWork.map((work) => {
   
   const prevProjectsDisplay = prevProjects.map((proj) => {
     return (
-      <div className="bg-green-500 p-4 rounded-lg shadow-md mb-4 hover:bg-green-600 hover:shadow-lg transition-all duration-300">
+      <div key={proj.name } className="bg-green-500 p-4 rounded-lg shadow-md mb-4 hover:bg-green-600 hover:shadow-lg transition-all duration-300">
         <div className="flex-col items-center justify-between mb-4">
           <div>
             <h4 className="text-white text-2xl font-semibold">{proj.name}</h4>
