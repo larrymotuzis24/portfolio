@@ -42,6 +42,7 @@ const About = () => {
     }, typingSpeed);
 
     return () => clearTimeout(typingEffect);
+    // eslint-disable-next-line
   }, [intro, isDeleting, loopNum, typingSpeed]);
 
   return (
