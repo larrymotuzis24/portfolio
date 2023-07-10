@@ -37,7 +37,7 @@ const recentWorkDisplay = recentWork.map((work) => {
       <div key={work.name} className="bg-blue-500 p-4 rounded-lg shadow-md mb-4 hover:bg-blue-600 hover:shadow-lg transition-all duration-300">
         <div className="flex-col items-center justify-between mb-4">
           <div>
-            <a className="text-white text-2xl font-semibold" href={work.to}>{work.name}</a>
+            <a className="text-white text-2xl font-semibold" href={work.to} target="_blank" >{work.name}</a>
             <div className="flex items-center mt-2 mb-2">
               <FiCode className="text-white text-xl mr-2" />
               <p className="text-white text-sm">Tech Stack: React, Node.js, Express</p>
@@ -47,7 +47,7 @@ const recentWorkDisplay = recentWork.map((work) => {
             work.video ? (<div>
               <video className="rounded-md" src={work.video} controls />
             </div>):(
-              <div>
+              <div target="_blank" href={work.to}>
               <a className="rounded-md" target="_blank" href={work.to}> {work.to} </a>
             </div>
             )
