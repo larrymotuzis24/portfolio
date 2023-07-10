@@ -48,7 +48,7 @@ const recentWorkDisplay = recentWork.map((work) => {
               <video className="rounded-md" src={work.video} controls />
             </div>):(
               <div>
-              <a className="rounded-md" href={work.to}> {work.to} </a>
+              <a className="rounded-md" target="_blank" href={work.to}> {work.to} </a>
             </div>
             )
           }
