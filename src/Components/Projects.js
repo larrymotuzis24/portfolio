@@ -19,12 +19,17 @@ description:'The e-commerce application offers a seamless platform for consumers
 ];
 
 const recentWork = [
-{
-name: "CVG Website",
-to: "/",
-video: CVGDemo,
-description:'I collaborated with an appraisal group to develop a dynamic and user-friendly website that caters to their specific needs. The website serves as a comprehensive platform for the group, offering valuable features and functionalities to enhance their operations.'
-},
+  {
+    name: "TIC-TAC-TOE",
+    to: "https://larrymotuzis24.github.io/tic-tac-toe/",
+    description: 'Created a classic Tic-Tac-Toe game using Tic-Tac-Toe app using React.js. The app allows users to play the classic game against an AI opponent. It features an intuitive user interface, responsive design, and smooth gameplay experience. The app incorporates a range of technologies and concepts, including React hooks, Redux for state management, and the Minimax algorithm for the AI opponent. The Minimax algorithm ensures that the AI opponent makes optimal moves, providing a challenging experience for players.'
+  },  
+  {
+  name: "CVG Website",
+  to: "/",
+  video: CVGDemo,
+  description:'I collaborated with an appraisal group to develop a dynamic and user-friendly website that caters to their specific needs. The website serves as a comprehensive platform for the group, offering valuable features and functionalities to enhance their operations.'
+  }
 ];
 
 const recentWorkDisplay = recentWork.map((work) => {
@@ -32,15 +37,22 @@ const recentWorkDisplay = recentWork.map((work) => {
       <div key={work.name} className="bg-blue-500 p-4 rounded-lg shadow-md mb-4 hover:bg-blue-600 hover:shadow-lg transition-all duration-300">
         <div className="flex-col items-center justify-between mb-4">
           <div>
-            <h4 className="text-white text-2xl font-semibold">{work.name}</h4>
+            <a className="text-white text-2xl font-semibold" href={work.to}>{work.name}</a>
             <div className="flex items-center mt-2 mb-2">
               <FiCode className="text-white text-xl mr-2" />
               <p className="text-white text-sm">Tech Stack: React, Node.js, Express</p>
             </div>
           </div>
-          <div>
-            <video className="rounded-md" src={work.video} controls />
-          </div>
+          {
+            work.video ? (<div>
+              <video className="rounded-md" src={work.video} controls />
+            </div>):(
+              <div>
+              <a className="rounded-md" href={work.to}> {work.to} </a>
+            </div>
+            )
+          }
+          
         </div>
         <div>
           <p className="text-white">{work.description}</p>
