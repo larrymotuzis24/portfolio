@@ -1,7 +1,7 @@
 import React from "react";
 import { FiCode, FiBookOpen } from 'react-icons/fi';
 import testBrewDemo from "../Team-5-TestBrew.mov";
-import CVGDemo from '../CVG-demo-2.mov';
+
 
 const Projects = () => {
 const prevProjects = [
@@ -26,8 +26,8 @@ const recentWork = [
   },  
   {
   name: "CVG Website",
-  to: "/",
-  video: CVGDemo,
+  to: "https://www.coopervaluationgroup.com/",
+  // video: CVGDemo,
   description:'I collaborated with an appraisal group to develop a dynamic and user-friendly website that caters to their specific needs. The website serves as a comprehensive platform for the group, offering valuable features and functionalities to enhance their operations.'
   }
 ];
