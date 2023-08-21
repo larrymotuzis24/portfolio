@@ -61,9 +61,12 @@ const About = () => {
               <ul className="list-disc pl-6 space-y-2">
                 <li>JavaScript</li>
                 <li>React</li>
+                <li>React Redux </li>
+                <li>Redux-Toolkit</li>
                 <li>Node.js</li>
                 <li>Tailwind CSS</li>
-                <li>Redux-Toolkit</li>
+                <li> Firebase </li>
+                <li> MySQL </li>
               </ul>
             </div>
           </div>
