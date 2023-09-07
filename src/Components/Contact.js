@@ -1,39 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Contact = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !subject || !message) {
-      setErrorMessage('Please fill out all fields');
+      setErrorMessage("Please fill out all fields");
       return;
     }
 
     try {
-      const response = await fetch('/.netlify/functions/sendEmail', {
-        method: 'POST',
+      const response = await fetch("/.netlify/functions/sendEmail", {
+        method: "POST",
         body: JSON.stringify({ name, email, subject, message }),
       });
 
       if (response.ok) {
-        setSuccessMessage('Email sent successfully');
-        setName('');
-        setEmail('');
-        setSubject('');
-        setMessage('');
+        setSuccessMessage("Email sent successfully");
+        setName("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
       } else {
-        setErrorMessage('Error sending email');
+        setErrorMessage("Error sending email");
       }
     } catch (error) {
-      console.error('Error sending email', error);
-      setErrorMessage('Error sending email');
+      console.error("Error sending email", error);
+      setErrorMessage("Error sending email");
     }
   };
 
@@ -113,4 +113,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

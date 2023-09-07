@@ -1,6 +1,6 @@
-import React from 'react';
-import Navbar from './NavBar';
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import Navbar from "./NavBar";
+import { Outlet } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -13,12 +13,11 @@ const Header = () => {
           </div>
         </div>
       </header>
-        <div>
+      <div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Outlet />
         </div>
-      
-        </div>
+      </div>
     </div>
   );
 };
