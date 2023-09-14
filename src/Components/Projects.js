@@ -75,7 +75,7 @@ const Projects = () => {
               ) : null}
             </div>
             <div>
-              <a href={work.to}> {work.to} </a>
+              <a href={work.to}  target="_blank" > {work.to} </a>
             </div>
           </div>
         </div>
@@ -94,9 +94,9 @@ const Projects = () => {
       >
         <div className="flex-col items-center justify-between mb-4">
           <div>
-            <h4 className="text-white text-2xl font-semibold">{proj.name}</h4>
+            <h4 className="text-white text-2xl font-semibold"> <a href={proj.to}  target="_blank"> {proj.name} </a> </h4>
           </div>
-          <a href={proj.to}> Click here to check out this project! </a>
+          <a href={proj.to}  target="_blank"> Click here to check out this project! </a>
         </div>
         <div>
           <p className="text-white">{proj.description}</p>
