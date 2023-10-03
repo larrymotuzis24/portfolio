@@ -7,7 +7,7 @@ const About = () => {
 
     I take pride in crafting engaging and interactive web applications, always aiming for the perfect balance between form and function. When I'm not writing lines of code or solving complex problems, you can find me exploring new technologies, tinkering with emerging tools, and staying up-to-date with industry trends to ensure I always deliver top-notch, innovative solutions.
 
-    Through dedication and perseverance, I've honed my abilities in various programming languages and frameworks, constantly striving to push the boundaries of what's possible. I believe that software development is an ever-evolving art form, and I'm committed to growing alongside it. I have done work in software development, front-end/back-end web and database/server management.
+    Through dedication and perseverance, I've honed my abilities in various programming languages and frameworks, constantly striving to push the boundaries of what's possible. I believe that software development and Web development is an ever-evolving art form, and I'm committed to growing alongside it. I have done work in software and web development, front-end/back-end web and database/server management.
   `;
 
   const introWords = ["Full Stack Developer", "Problem Solver"];
@@ -47,7 +47,7 @@ const About = () => {
   return (
     <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-white">
-        <h1 className="text-4xl font-bold mb-2">About </h1>
+        <h1 className="text-4xl font-bold mb-2">About Me </h1>
         <h2 className={`typing-effect${isDeleting ? " hide-cursor" : ""}`}>
           {intro}
         </h2>
@@ -72,6 +72,7 @@ const About = () => {
                 <li> Node.js </li>
                 <li> TypeScript </li>
                 <li> PHP </li>
+                <li> MongoDB </li>
                 <li> Firebase </li>
               </ul>
             </div>

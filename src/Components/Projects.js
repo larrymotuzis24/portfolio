@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FiCode, FiBookOpen } from "react-icons/fi";
-import testBrewDemo from "../Team-5-TestBrew.mov";
+import { FiCode } from "react-icons/fi";
 
 const Projects = () => {
   const prevProjects = [
@@ -42,45 +41,50 @@ const Projects = () => {
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState("");
 
-  const handleVideoClick = (videoSrc) => {
-    setSelectedVideo(videoSrc);
-    setShowVideoModal(true);
-  };
+  // const handleVideoClick = (videoSrc) => {
+  //   setSelectedVideo(videoSrc);
+  //   setShowVideoModal(true);
+  // };
 
   const recentWorkDisplay = recentWork.map((work) => {
     return (
-      <div
-        key={work.name}
-        className="bg-blue-500 p-4 rounded-lg shadow-md mb-4 hover:bg-blue-600 hover:shadow-lg transition-all duration-300"
-      >
-        <div className="flex-col items-center justify-between mb-4">
-          <div>
-            <a
-              className="text-white text-2xl font-semibold"
-              href={work.to}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {work.name}
-            </a>
-            <div className="flex items-center mt-2 mb-2">
-              {work.techStack ? (
-                <>
-                  {" "}
-                  <FiCode className="text-white text-xl mr-2" />{" "}
-                  <p className="text-white text-sm">
-                    Tech Stack: {work.techStack}{" "}
-                  </p>{" "}
-                </>
-              ) : null}
-            </div>
+      <div className="max-w-2xl pb-6">
+        <div
+          key={work.name}
+          className="bg-blue-500 p-4 rounded-lg shadow-md mb-4 hover:bg-blue-600 hover:shadow-lg transition-all duration-300"
+        >
+          <div className="flex-col items-center justify-between mb-4">
             <div>
-              <a href={work.to}  target="_blank" > {work.to} </a>
+              <a
+                className="text-white text-2xl font-semibold"
+                href={work.to}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {work.name}
+              </a>
+              <div className="flex items-center mt-2 mb-2">
+                {work.techStack ? (
+                  <>
+                    {" "}
+                    <FiCode className="text-white text-xl mr-2" />{" "}
+                    <p className="text-white text-sm">
+                      Tech Stack: {work.techStack}{" "}
+                    </p>{" "}
+                  </>
+                ) : null}
+              </div>
+              <div>
+                <a href={work.to} target="_blank">
+                  {" "}
+                  {work.to}{" "}
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <p className="text-white">{work.description}</p>
+          <div>
+            <p className="text-white">{work.description}</p>
+          </div>
         </div>
       </div>
     );
@@ -88,18 +92,40 @@ const Projects = () => {
 
   const prevProjectsDisplay = prevProjects.map((proj) => {
     return (
-      <div
-        key={proj.name}
-        className="bg-green-500 p-4 rounded-lg shadow-md mb-4 hover:bg-green-600 hover:shadow-lg transition-all duration-300"
-      >
-        <div className="flex-col items-center justify-between mb-4">
-          <div>
-            <h4 className="text-white text-2xl font-semibold"> <a href={proj.to}  target="_blank"> {proj.name} </a> </h4>
+      <div className="max-w-2xl pb-6">
+        <div
+          key={proj.name}
+          className="bg-green-500 p-4 rounded-lg shadow-md mb-4 hover:bg-green-600 hover:shadow-lg transition-all duration-300"
+        >
+          <div className="flex-col items-center justify-between mb-4">
+            <div>
+              <h4 className="text-white text-2xl font-semibold">
+                {" "}
+                <a href={proj.to} target="_blank">
+                  {" "}
+                  {proj.name}{" "}
+                </a>{" "}
+              </h4>
+            </div>
+            <a href={proj.to} target="_blank">
+              {" "}
+              Click here to check out this project!{" "}
+            </a>
           </div>
-          <a href={proj.to}  target="_blank"> Click here to check out this project! </a>
-        </div>
-        <div>
-          <p className="text-white">{proj.description}</p>
+          <div className="flex items-center mt-2 mb-2">
+                {proj.techStack ? (
+                  <>
+                    {" "}
+                    <FiCode className="text-white text-xl mr-2" />{" "}
+                    <p className="text-white text-sm">
+                      Tech Stack: {proj.techStack}{" "}
+                    </p>{" "}
+                  </>
+                ) : null}
+              </div>
+          <div>
+            <p className="text-white">{proj.description}</p>
+          </div>
         </div>
       </div>
     );
@@ -108,14 +134,17 @@ const Projects = () => {
   return (
     <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-white">
-        <h1 className="text-4xl font-bold mb-12">Projects</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <h1 className="text-4xl font-bold mb-12 text-center">
+          {" "}
+          Recent Work and Projects{" "}
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
           <div>
-            <h4 className="text-2xl font-semibold mb-4">Recent Work</h4>
+            <h4 className="text-2xl font-semibold mb-6 uppercase underline"> Recent Work </h4>
             {recentWorkDisplay}
           </div>
           <div>
-            <h4 className="text-2xl font-semibold mb-4">Previous Projects</h4>
+            <h4 className="text-2xl font-semibold mb-6 uppercase underline"> Projects </h4>
             {prevProjectsDisplay}
           </div>
         </div>
