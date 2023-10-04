@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiCode } from "react-icons/fi";
+import testBrewDemo from "../Team-5-TestBrew.mov";
 
 const Projects = () => {
   const prevProjects = [
     {
       name: "Test Brew",
       to: "https://testbrew.herokuapp.com/",
-      // video: testBrewDemo,
+      video: testBrewDemo,
       techStack:
         "React, JavaScript, Express, Webpack, Node.js, SQL, TailWind CSS, JSON Web Token",
       description:
@@ -38,14 +39,6 @@ const Projects = () => {
     },
   ];
 
-  const [showVideoModal, setShowVideoModal] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState("");
-
-  // const handleVideoClick = (videoSrc) => {
-  //   setSelectedVideo(videoSrc);
-  //   setShowVideoModal(true);
-  // };
-
   const recentWorkDisplay = recentWork.map((work) => {
     return (
       <div className="max-w-2xl pb-6">
@@ -75,7 +68,7 @@ const Projects = () => {
                 ) : null}
               </div>
               <div>
-                <a href={work.to} target="_blank">
+                <a href={work.to} target="_blank" rel="noreferrer">
                   {" "}
                   {work.to}{" "}
                 </a>
@@ -101,28 +94,29 @@ const Projects = () => {
             <div>
               <h4 className="text-white text-2xl font-semibold">
                 {" "}
-                <a href={proj.to} target="_blank">
+                <a href={proj.to} target="_blank" rel="noreferrer">
                   {" "}
                   {proj.name}{" "}
                 </a>{" "}
               </h4>
             </div>
-            <a href={proj.to} target="_blank">
+            <a href={proj.to} target="_blank" rel="noreferrer">
               {" "}
               Click here to check out this project!{" "}
             </a>
           </div>
+
           <div className="flex items-center mt-2 mb-2">
-                {proj.techStack ? (
-                  <>
-                    {" "}
-                    <FiCode className="text-white text-xl mr-2" />{" "}
-                    <p className="text-white text-sm">
-                      Tech Stack: {proj.techStack}{" "}
-                    </p>{" "}
-                  </>
-                ) : null}
-              </div>
+            {proj.techStack ? (
+              <>
+                {" "}
+                <FiCode className="text-white text-xl mr-2" />{" "}
+                <p className="text-white text-sm">
+                  Tech Stack: {proj.techStack}{" "}
+                </p>{" "}
+              </>
+            ) : null}
+          </div>
           <div>
             <p className="text-white">{proj.description}</p>
           </div>
@@ -140,30 +134,21 @@ const Projects = () => {
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
           <div>
-            <h4 className="text-2xl font-semibold mb-6 uppercase underline"> Recent Work </h4>
+            <h4 className="text-2xl font-semibold mb-6 uppercase underline">
+              {" "}
+              Recent Work{" "}
+            </h4>
             {recentWorkDisplay}
           </div>
           <div>
-            <h4 className="text-2xl font-semibold mb-6 uppercase underline"> Projects </h4>
+            <h4 className="text-2xl font-semibold mb-6 uppercase underline">
+              {" "}
+              Projects{" "}
+            </h4>
             {prevProjectsDisplay}
           </div>
         </div>
       </div>
-
-      {/* Modal for displaying videos */}
-      {showVideoModal && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-80">
-          <div className="relative">
-            <button
-              className="absolute top-2 right-2 text-white text-xl font-bold cursor-pointer"
-              onClick={() => setShowVideoModal(false)}
-            >
-              X
-            </button>
-            <video className="rounded-md" src={selectedVideo} controls />
-          </div>
-        </div>
-      )}
     </div>
   );
 };
