@@ -2,28 +2,20 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  // Create refs for form inputs
+
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const subjectRef = useRef(null);
   const messageRef = useRef(null);
 
-  // Create a form object to store input values
-  const formData = {
-    name: nameRef.current ? nameRef.current.value : '',
-    email: emailRef.current ? emailRef.current.value : '',
-    subject: subjectRef.current ? subjectRef.current.value : '',
-    message: messageRef.current ? messageRef.current.value : '',
-  };
 
-  // Create refs for success and error messages
   const errorMessageRef = useRef(null);
   const successMessageRef = useRef(null);
 
   const sendEmail = (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log(form)
+
 
     emailjs
       .sendForm("service_fci53fm", "contact_form", form, 'TZuIxhsLLVwo22Ok1')
@@ -40,7 +32,7 @@ const Contact = () => {
         }
       );
 
-    // Clear form inputs (you don't need to clear inputs manually when using the form element)
+ 
     form.reset();
   };
 

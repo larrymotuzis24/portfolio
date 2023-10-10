@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiCode } from "react-icons/fi";
 import testBrewDemo from "../Team-5-TestBrew.mov";
+import VideoModal from "./VideoModal";
 
 const Projects = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const handleProjectClick = (proj) => {
+    setVideoUrl(proj.video);
+    setIsModalOpen(true);
+  };
+
   const prevProjects = [
     {
       name: "Test Brew",
@@ -24,7 +33,7 @@ const Projects = () => {
 
   const prevProjectsDisplay = prevProjects.map((proj) => {
     return (
-      <div className="max-w-2xl pb-6" key={proj.name}>
+      <div className="max-w-2xl pb-6" key={proj.name}> 
         <div className="bg-green-500 p-4 rounded-lg shadow-md mb-4 hover:bg-green-600 hover:shadow-lg transition-all duration-300">
           <div className="flex-col items-center justify-between mb-4">
             <div>
@@ -35,19 +44,29 @@ const Projects = () => {
                   {proj.name}{" "}
                 </a>{" "}
               </h4>
-              {proj.techStack ? (
-                <div className="flex items-center mb-4 ">
+              <a href={proj.to} target="_blank" rel="noreferrer" className="">
+                {proj.to}
+              </a>
+              
+                <div className="flex items-center mb-4 mt-4">
                   <FiCode className="text-white text-xl mr-2" />
                   <p className="text-white text-sm">
                     Tech Stack: {proj.techStack}
                   </p>
                 </div>
-              ) : null}
             </div>
-            <a href={proj.to} target="_blank" rel="noreferrer">
-              {" "}
-              Click here to check out this project!{" "}
-            </a>
+            
+             
+              {proj.video ? (
+                <button
+                  className="text-blue-500 hover:text-blue-700"
+                  onClick={() => handleProjectClick(proj)}
+                >
+                  Watch Video
+                </button>
+              ) : null}
+
+          
           </div>
           <div className="flex items-center mt-2 mb-2"></div>
           <div>
@@ -58,7 +77,16 @@ const Projects = () => {
     );
   });
 
-  return prevProjectsDisplay;
+  return (
+    <>
+      {prevProjectsDisplay}
+      <VideoModal
+        isOpen={isModalOpen}
+        videoUrl={videoUrl}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
+  );
 };
 
 export default Projects;
