@@ -1,102 +1,93 @@
-import React, { useState } from "react";
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+  // Create refs for form inputs
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const subjectRef = useRef(null);
+  const messageRef = useRef(null);
 
-  const handleSubmit = async (e) => {
+  // Create a form object to store input values
+  const formData = {
+    name: nameRef.current ? nameRef.current.value : '',
+    email: emailRef.current ? emailRef.current.value : '',
+    subject: subjectRef.current ? subjectRef.current.value : '',
+    message: messageRef.current ? messageRef.current.value : '',
+  };
+
+  // Create refs for success and error messages
+  const errorMessageRef = useRef(null);
+  const successMessageRef = useRef(null);
+
+  const sendEmail = (e) => {
     e.preventDefault();
+    const form = e.target;
+    console.log(form)
 
-    if (!name || !email || !subject || !message) {
-      setErrorMessage("Please fill out all fields");
-      return;
-    }
+    emailjs
+      .sendForm("service_fci53fm", "contact_form", form, 'TZuIxhsLLVwo22Ok1')
+      .then(
+        (result) => {
+          console.log(result.text);
+          successMessageRef.current.innerText = "Message sent successfully!";
+          errorMessageRef.current.innerText = "";
+        },
+        (error) => {
+          console.log(error.text);
+          errorMessageRef.current.innerText = "An error occurred while sending the message.";
+          successMessageRef.current.innerText = "";
+        }
+      );
 
-    try {
-      const response = await fetch("/.netlify/functions/sendEmail", {
-        method: "POST",
-        body: JSON.stringify({ name, email, subject, message }),
-      });
-
-      if (response.ok) {
-        setSuccessMessage("Email sent successfully");
-        setName("");
-        setEmail("");
-        setSubject("");
-        setMessage("");
-      } else {
-        setErrorMessage("Error sending email");
-      }
-    } catch (error) {
-      console.error("Error sending email", error);
-      setErrorMessage("Error sending email");
-    }
+    // Clear form inputs (you don't need to clear inputs manually when using the form element)
+    form.reset();
   };
 
   return (
     <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-white">
         <h1 className="text-4xl font-bold mb-12">Contact Me</h1>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-          {successMessage && <p className="text-green-500">{successMessage}</p>}
+        <form onSubmit={sendEmail} className="space-y-6">
+          <p ref={errorMessageRef} className="text-red-500"></p>
+          <p ref={successMessageRef} className="text-green-500"></p>
           <div>
-            <label htmlFor="name" className="block text-sm font-medium">
-              Your Name
-            </label>
             <input
               id="name"
-              name="name"
+              ref={nameRef}
               type="text"
               required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              placeholder="Your Name"
               className="w-full mt-1 p-2 text-black rounded-md border border-gray-300"
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium">
-              Your Email
-            </label>
             <input
               id="email"
-              name="email"
+              ref={emailRef}
               type="email"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your Email"
               className="w-full mt-1 p-2 text-black rounded-md border border-gray-300"
             />
           </div>
           <div>
-            <label htmlFor="subject" className="block text-sm font-medium">
-              Subject
-            </label>
             <input
               id="subject"
-              name="subject"
+              ref={subjectRef}
               type="text"
               required
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
+              placeholder="Subject"
               className="w-full mt-1 p-2 text-black rounded-md border border-gray-300"
             />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium">
-              Your Message
-            </label>
             <textarea
               id="message"
-              name="message"
+              ref={messageRef}
               rows="5"
               required
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Your Message"
               className="w-full mt-1 p-2 text-black rounded-md border border-gray-300"
             ></textarea>
           </div>

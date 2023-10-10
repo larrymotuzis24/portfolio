@@ -22,74 +22,10 @@ const Projects = () => {
     },
   ];
 
-  const recentWork = [
-    {
-      name: "Cooper Valuation Group",
-      to: "https://www.coopervaluationgroup.com/",
-      techStack: "React, JavaScript, TailWind CSS",
-      // video: CVGDemo,
-      description:
-        "I collaborated with an appraisal group to develop a dynamic and user-friendly website that caters to their specific needs. The website serves as a comprehensive platform for the group, offering valuable features and functionalities to enhance their operations.",
-    },
-    {
-      name: "Assist Basketball Network",
-      to: "https://assistbasketballnetwork.com/",
-      description:
-        "Led a comprehensive engagement with ABN's ownership team to strategize and outline their vision for the upcoming remodel and relaunch of their website. Collaborated closely with the owner to understand their specific requirements and objectives. Leveraging in-depth discussions and insightful feedback, orchestrated the creation of a dynamic and modern website that seamlessly aligns with ABN's brand identity. The result of this collaborative effort is a freshly relaunched website that showcases ABN's offerings in an engaging and user-friendly manner, while also reflecting the company's values and aspirations.",
-    },
-  ];
-
-  const recentWorkDisplay = recentWork.map((work) => {
-    return (
-      <div className="max-w-2xl pb-6">
-        <div
-          key={work.name}
-          className="bg-blue-500 p-4 rounded-lg shadow-md mb-4 hover:bg-blue-600 hover:shadow-lg transition-all duration-300"
-        >
-          <div className="flex-col items-center justify-between mb-4">
-            <div>
-              <a
-                className="text-white text-2xl font-semibold"
-                href={work.to}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {work.name}
-              </a>
-              <div className="flex items-center mt-2 mb-2">
-                {work.techStack ? (
-                  <>
-                    {" "}
-                    <FiCode className="text-white text-xl mr-2" />{" "}
-                    <p className="text-white text-sm">
-                      Tech Stack: {work.techStack}{" "}
-                    </p>{" "}
-                  </>
-                ) : null}
-              </div>
-              <div>
-                <a href={work.to} target="_blank" rel="noreferrer">
-                  {" "}
-                  {work.to}{" "}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p className="text-white">{work.description}</p>
-          </div>
-        </div>
-      </div>
-    );
-  });
-
   const prevProjectsDisplay = prevProjects.map((proj) => {
     return (
-      <div className="max-w-2xl pb-6">
-        <div
-          key={proj.name}
-          className="bg-green-500 p-4 rounded-lg shadow-md mb-4 hover:bg-green-600 hover:shadow-lg transition-all duration-300"
-        >
+      <div className="max-w-2xl pb-6" key={proj.name}>
+        <div className="bg-green-500 p-4 rounded-lg shadow-md mb-4 hover:bg-green-600 hover:shadow-lg transition-all duration-300">
           <div className="flex-col items-center justify-between mb-4">
             <div>
               <h4 className="text-white text-2xl font-semibold">
@@ -99,24 +35,21 @@ const Projects = () => {
                   {proj.name}{" "}
                 </a>{" "}
               </h4>
+              {proj.techStack ? (
+                <div className="flex items-center mb-4 ">
+                  <FiCode className="text-white text-xl mr-2" />
+                  <p className="text-white text-sm">
+                    Tech Stack: {proj.techStack}
+                  </p>
+                </div>
+              ) : null}
             </div>
             <a href={proj.to} target="_blank" rel="noreferrer">
               {" "}
               Click here to check out this project!{" "}
             </a>
           </div>
-
-          <div className="flex items-center mt-2 mb-2">
-            {proj.techStack ? (
-              <>
-                {" "}
-                <FiCode className="text-white text-xl mr-2" />{" "}
-                <p className="text-white text-sm">
-                  Tech Stack: {proj.techStack}{" "}
-                </p>{" "}
-              </>
-            ) : null}
-          </div>
+          <div className="flex items-center mt-2 mb-2"></div>
           <div>
             <p className="text-white">{proj.description}</p>
           </div>
@@ -125,32 +58,7 @@ const Projects = () => {
     );
   });
 
-  return (
-    <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto text-white">
-        <h1 className="text-4xl font-bold mb-12 text-center">
-          {" "}
-          Recent Work and Projects{" "}
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
-          <div>
-            <h4 className="text-2xl font-semibold mb-6 uppercase underline">
-              {" "}
-              Recent Work{" "}
-            </h4>
-            {recentWorkDisplay}
-          </div>
-          <div>
-            <h4 className="text-2xl font-semibold mb-6 uppercase underline">
-              {" "}
-              Projects{" "}
-            </h4>
-            {prevProjectsDisplay}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return prevProjectsDisplay;
 };
 
 export default Projects;

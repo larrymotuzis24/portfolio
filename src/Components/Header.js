@@ -8,7 +8,7 @@ const Header = () => {
       <header className="bg-gray-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <h2 className="text-2xl font-bold">Larry Motuzis</h2>
+            <h2 className="text-2xl font-bold"> <a href="/portfolio"> Larry Motuzis </a></h2>
             <Navbar />
           </div>
         </div>
