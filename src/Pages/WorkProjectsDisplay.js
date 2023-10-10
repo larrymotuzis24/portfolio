@@ -1,5 +1,5 @@
 import React from "react";
-import RejectWork from "../Components/RecectWork";
+import RejectWork from "../Components/RecentWork";
 import Projects from "../Components/Projects";
 
 export default function WorkProjectsDisplayPage() {
