@@ -31,7 +31,7 @@ const Navbar = () => {
           <Link
             key={item.name}
             to={item.to}
-            className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            className="text-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
           >
             {item.name}
           </Link>

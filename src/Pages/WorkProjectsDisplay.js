@@ -4,7 +4,7 @@ import Projects from "../Components/Projects";
 
 export default function WorkProjectsDisplayPage() {
   return (
-    <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+    <div className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-white">
         <h1 className="text-4xl font-bold mb-12 text-center">
           {" "}
