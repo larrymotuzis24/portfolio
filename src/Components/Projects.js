@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiCode } from "react-icons/fi";
+import ProjectCard from "./ProjectCard";
 import testBrewDemo from "../Team-5-TestBrew.mov";
 import VideoModal from "./VideoModal";
 
@@ -31,61 +31,22 @@ const Projects = () => {
     },
   ];
 
-  const prevProjectsDisplay = prevProjects.map((proj) => {
-    return (
-      <div className="max-w-2xl pb-6" key={proj.name}> 
-        <div className="bg-green-500 p-4 rounded-lg shadow-md mb-4 hover:bg-green-600 hover:shadow-lg transition-all duration-300">
-          <div className="flex-col items-center justify-between mb-4">
-            <div>
-              <h4 className="text-white text-2xl font-semibold">
-                {" "}
-                <a href={proj.to} target="_blank" rel="noreferrer">
-                  {" "}
-                  {proj.name}{" "}
-                </a>{" "}
-              </h4>
-              <a href={proj.to} target="_blank" rel="noreferrer" className="">
-                {proj.to}
-              </a>
-              
-                <div className="flex items-center mb-4 mt-4">
-                  <FiCode className="text-white text-xl mr-2" />
-                  <p className="text-white text-sm">
-                    Tech Stack: {proj.techStack}
-                  </p>
-                </div>
-            </div>
-            
-             
-              {proj.video ? (
-                <button
-                  className="text-blue-500 hover:text-blue-700"
-                  onClick={() => handleProjectClick(proj)}
-                >
-                  Watch Video
-                </button>
-              ) : null}
-
-          
-          </div>
-          <div className="flex items-center mt-2 mb-2"></div>
-          <div>
-            <p className="text-white">{proj.description}</p>
-          </div>
-        </div>
-      </div>
-    );
-  });
-
+  
   return (
-    <>
-      {prevProjectsDisplay}
+    <div className="flex flex-col">
+      {prevProjects.map((proj, index) => (
+        <ProjectCard
+          key={index}
+          project={proj}
+          onProjectClick={() => handleProjectClick(proj)}
+        />
+      ))}
       <VideoModal
         isOpen={isModalOpen}
         videoUrl={videoUrl}
         onClose={() => setIsModalOpen(false)}
       />
-    </>
+    </div>
   );
 };
 

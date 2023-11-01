@@ -6,10 +6,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "About", to: "/portfolio" },
-    { name: "Projects", to: "/projects" },
-    {name:'Contact', to:'/contact'},
+    { name: "About", target: "/" },
+    { name: "Projects", target: "projects" },
+    { name: "Contact", target: "contact" },
   ];
+
+
 
   return (
     <>
@@ -23,14 +25,12 @@ const Navbar = () => {
         </button>
       </div>
       <div
-        className={`hidden:sm:block sm:flex sm:space-x-4 ${
-          isOpen ? "block" : "hidden"
-        }`}
+        className={`hidden:sm:block sm:flex sm:space-x-4 ${isOpen ? "block" : "hidden"}`}
       >
         {navLinks.map((item) => (
           <Link
             key={item.name}
-            to={item.to}
+            to={item.target}
             className="text-gray-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
           >
             {item.name}
@@ -40,5 +40,6 @@ const Navbar = () => {
     </>
   );
 };
+
 
 export default Navbar;

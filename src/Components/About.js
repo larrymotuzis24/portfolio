@@ -45,7 +45,7 @@ const About = () => {
   }, [intro, isDeleting, loopNum, typingSpeed]);
 
   return (
-    <div className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+    <div id="about-section" className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-white">
         <h1 className="text-4xl font-bold mb-2">About Me </h1>
         <h2 className={`typing-effect${isDeleting ? " hide-cursor" : ""}`}>
